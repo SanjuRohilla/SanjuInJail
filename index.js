@@ -11,7 +11,7 @@ document.body.appendChild(renderer.domElement);
 const view = 75;
 const aspect = w/h;
 const near = 0.1;
-const far = 10;
+const far = 100;
 const camera = new THREE.PerspectiveCamera(view , aspect , near , far);
 camera.position.z = 2;
 
@@ -21,7 +21,7 @@ controls.dampingFactor = 0.03;
 
 const loader = new THREE.TextureLoader()
 const scene = new THREE.Scene();
-const geo = new THREE.IcosahedronGeometry(1.0 , 6);
+const geo = new THREE.IcosahedronGeometry(1.0 , 2);
 const mat = new THREE.MeshStandardMaterial({
     // map: loader.load("./Screenshot 2024-05-28 170111.png"),
     // color: 0x00ff00,
@@ -49,7 +49,7 @@ function animate(t = 0) {
     requestAnimationFrame(animate);
        mesh.rotation.y = t * 0.001;
        mesh.rotation.x = t * 0.001;
-       stars.rotation.y -= 0.0002;
+       stars.rotation.y += 0.0002;
     renderer.render(scene , camera);
     controls.update();
 }
